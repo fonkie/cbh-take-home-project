@@ -33,15 +33,23 @@ Implementation details: This task will require updating the database schema for 
 
 Ticket 3: Update the Shift Retrieval Functionality
 
-Acceptance criteria: Modify the getShiftsByFacility function to return the custom_id for each Agent assigned to a Shift, in addition to the rest of the Shift information. This function should be backwards-compatible with existing clients that do not provide custom_ids.
+Acceptance criteria: Modify the `getShiftsByFacility` function to return the custom_id for each Agent assigned to a Shift, in addition to the rest of the Shift information. This function should be backwards-compatible with existing clients that do not provide custom_ids.
 Time/effort estimate: 2-3 hours
 Implementation details: This task will require modifying the SQL query used to retrieve Shift data to include the custom_id field from the database, and modifying the function to return this field in the response.
 
 
 Ticket 4: Update the Report Generation Functionality
 
-Acceptance criteria: Modify the generateReport function to use the custom_id field instead of the internal database id when generating reports. This should be backwards-compatible with reports generated before this change.
+Acceptance criteria: Modify the `generateReport` function to use the custom_id field instead of the internal database id when generating reports. This should be backwards-compatible with reports generated before this change.
 Time/effort estimate: 2-3 hours
 Implementation details: This task will require modifying the function to look up the custom_id of each Agent assigned to a Shift in the database, and using this field in the report generation process.
-Overall, this ticket breakdown includes four individual tasks that build on each other to achieve the desired feature. These tasks should be performed in the order listed to ensure smooth implementation of the feature.
+
+
+Ticket 5: Documentation Update
+
+Acceptance criteria: Update the documentation to reflect the addition of the custom_id field for Agents, including instructions on how Facilities can add and manage custom ids for their Agents.
+Time/effort estimate: 1-2 hours
+Implementation details: This task will require updating the relevant sections of the user manual or online documentation to reflect the changes made in the previous tickets. It should include clear instructions on how Facilities can add and manage custom ids for their Agents.
+
+Overall, this ticket breakdown includes five individual tasks that build on each other to achieve the desired feature. These tasks should be performed in the order listed to ensure smooth implementation of the feature.
 
