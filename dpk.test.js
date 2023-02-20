@@ -21,10 +21,11 @@ describe('deterministicPartitionKey', () => {
     expect(result).toBe(hash);
   });
 
-  it("Creates a hash of the event data if event.partitionKey is undefined and returns it", () => {
-    const data = { a: 1, b: "2", c: [3, 4] };
-    const hash = crypto.createHash("sha3-512").update(JSON.stringify(data)).digest("hex");
-    expect(deterministicPartitionKey(data)).toBe(hash);
+  it('Stringifies partitionKey when it is not a string', () => {
+    const event = { partitionKey: { name: 'lucy', age: 20 } };
+    const data = JSON.stringify(event.partitionKey);
+    const result = deterministicPartitionKey(event);
+    expect(result).toBe(data);
   });
 
   it("Creates a hash of the candidate if it's longer than the maximum partition key length", () => {
@@ -32,6 +33,9 @@ describe('deterministicPartitionKey', () => {
     const hash = crypto.createHash("sha3-512").update(longString).digest("hex");
     expect(deterministicPartitionKey({ partitionKey: longString })).toBe(hash);
   });
+
+
 });
+
 
 

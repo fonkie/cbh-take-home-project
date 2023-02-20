@@ -14,19 +14,19 @@ Refactoring explanation:
 
 The variable `candidate` is now initialized to the default value, `TRIVIAL_PARTITION_KEY`, at the beginning of the function. This simplifies the code and avoids duplicated logic.
 The `if-else` structure has been refactored to reduce nested conditions and improve readability.
-The condition to check if `candidate` is a string has been moved outside the nested if-else statements to avoid repeating the same logic multiple times.
+The condition to check if `candidate` is a string has been moved outside the nested `if-else` statements to avoid repeating the same logic multiple times.
 The final condition to check if the length of `candidate` is greater than `MAX_PARTITION_KEY_LENGTH` has been moved to the end of the function.
 
 
 Refactored Function:
 
-The function takes an event object as a parameter and returns the partition key.
+The function takes an `event` object as a parameter and returns the partition key.
 The trivial partition key and the maximum partition key length are defined as constants.
-The candidate variable is initialized with the trivial partition key.
-If event is defined, it checks if it has a partitionKey property, and if it does, it assigns it to candidate.
-If event doesn't have a partitionKey property, it creates a hash of the event data using the sha3-512 algorithm and assigns it to candidate.
-If candidate is defined, it checks if it's of the correct type (string) and converts it to a string if it isn't.
-Finally, it checks the length of the candidate and if it's longer than the maximum partition key length, it creates a hash of the candidate using the sha3-512 algorithm and assigns it to candidate.
+The `candidate` variable is initialized with the trivial partition key.
+If `event` is defined, it checks if it has a `partitionKey` property, and if it does, it assigns it to `candidate`.
+If `event` doesn't have a `partitionKey` property, it creates a hash of the event data using the sha3-512 algorithm and assigns it to `candidate`.
+If `candidate` is defined, it checks if it's of the correct type (string) and converts it to a string if it isn't.
+Finally, it checks the length of the `candidate` and if it's longer than the maximum partition key length, it creates a hash of the `candidate` using the sha3-512 algorithm and assigns it to `candidate`.
 
 
 Ticket breakdown:
